@@ -1,22 +1,15 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
+class MyApp extends StatelessWidget {
   int card = 3;
 
   void randomCard() {
-    setState(() => card = Random().nextInt(51) + 1);
-    print("assets/card/$card.png");
+    card = 2;
+    print("Result $card");
   }
 
   @override
@@ -25,10 +18,18 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false, //banner
       home: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.blue,
+            backgroundColor: Colors.red,
             title: Text("Random Card"),
             centerTitle: true,
             elevation: 5.0,
+            // leading: Icon(Icons.arrow_back),
+            // actions: [
+            //   Icon(Icons.near_me),
+            //   SizedBox(
+            //     width: 5,
+            //   ),
+            //   Icon(Icons.add_shopping_cart),
+            // ],
           ),
           body: Column(
             // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -44,17 +45,15 @@ class _MyAppState extends State<MyApp> {
               Container(
                 width: double.infinity,
                 child: FlatButton(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(20),
-                          topLeft: Radius.circular(20))),
                   padding: EdgeInsets.all(30),
                   color: Colors.lightBlue,
                   child: Text(
                     "PRESS TO RANDOM",
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
-                  onPressed: randomCard,
+                  onPressed: () {
+                    randomCard();
+                  },
                 ),
               )
             ],
